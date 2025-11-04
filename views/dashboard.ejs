@@ -1,0 +1,120 @@
+<div class="card border-0 shadow-sm bg-light text-dark">
+  <div
+    class="card-header d-flex justify-content-between align-items-center bg-white border-bottom"
+  >
+    <h4 class="mb-0">Residents List</h4>
+    <a href="/residents/add" class="btn btn-dark btn-sm">
+      <i class="fas fa-plus"></i> Add Resident
+    </a>
+  </div>
+
+  <div class="card-body">
+    <% if (residents.length === 0) { %>
+    <div class="alert alert-secondary border">
+      No residents available. Click the "Add Resident" button to create one.
+    </div>
+    <% } else { %>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% residents.forEach(resident => { %>
+      <div class="col">
+        <div class="card h-100 border shadow-sm">
+          <div class="card-header bg-white border-bottom">
+            <h5 class="card-title mb-0"><%= resident.residentName %></h5>
+          </div>
+          <div class="card-body bg-light">
+            <p class="card-text"><%= resident.residentDescription %></p>
+            <ul class="list-group list-group-flush mb-3">
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Apartment:</span>
+                <span class="text-primary">
+                  <%= (resident.apartment && resident.apartment.apartmentName) ?
+                  resident.apartment.apartmentName : 'N/A' %>
+                </span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Floors:</span>
+                <span class="text-success"><%= resident.floor %></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>YOB:</span>
+                <span class="text-warning"><%= (resident.yOB) %></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>isOwned:</span>
+                <span>
+                  <% if (resident.isOwned) { %>
+                  <span class="badge bg-success">Yes</span>
+                  <% } else { %>
+                  <span class="badge bg-secondary">No</span>
+                  <% } %>
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer bg-white border-top">
+            <div class="d-flex justify-content-between">
+              <a
+                href="/residents/<%= resident._id %>"
+                class="btn btn-outline-primary btn-sm"
+              >
+                <i class="fas fa-edit"></i> Edit
+              </a>
+              <button
+                class="btn btn-outline-danger btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal<%= resident._id %>"
+              >
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </div>
+
+            <!-- Delete Modal -->
+            <div
+              class="modal fade"
+              id="deleteModal<%= resident._id %>"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header bg-light">
+                    <h5 class="modal-title">Confirm Delete</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure you want to delete "<%= resident.residentName
+                    %>"?
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
+                    <form
+                      action="/residents/delete/<%= resident._id %>"
+                      method="POST"
+                    >
+                      <button type="submit" class="btn btn-danger">
+                        Delete
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+    <% } %>
+  </div>
+</div>

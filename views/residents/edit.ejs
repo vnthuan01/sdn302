@@ -1,0 +1,68 @@
+<div class="card border-0 shadow-sm bg-white text-dark">
+  <div class="card-header d-flex justify-content-between align-items-center bg-light border-bottom">
+    <h4 class="mb-0">Edit Resident</h4>
+    <a href="/view/residents" class="btn btn-outline-secondary btn-sm">
+      <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </a>
+  </div>
+
+  <div class="card-body">
+    <form action="/residents/<%= resident._id %>" method="POST">
+      <div class="row">
+        <!-- Resident Name -->
+        <div class="col-md-6 mb-3">
+          <label for="residentName" class="form-label">Resident Name</label>
+          <input type="text" class="form-control" id="residentName" name="residentName" value="<%= resident.residentName %>" required>
+          <div class="form-text">Use letters, numbers, spaces, or slashes only.</div>
+        </div>
+
+        <!-- Floor -->
+        <div class="col-md-6 mb-3">
+          <label for="floor" class="form-label">Floor</label>
+          <input type="number" class="form-control" id="floor" name="floor" min="1" max="40" step="1" value="<%= resident.floor %>" required>
+          <div class="form-text">Value from 1 to 40 floors.</div>
+        </div>
+
+        <!-- YOB -->
+        <div class="col-md-6 mb-3">
+          <label for="yOB" class="form-label">YOB</label>
+          <input type="number" class="form-control" id="yOB" name="yOB" min="1940" max="2025" step="1" value="<%= resident.yOB %>" required>
+          <div class="form-text">Enter value 2004 for you birthday.</div>
+        </div>
+
+        <!-- Apartment -->
+        <div class="col-md-6 mb-3">
+          <label for="apartment" class="form-label">Apartment</label>
+          <select class="form-select" id="apartment" name="apartment" required>
+            <% apartments.forEach(apartment => { %>
+              <option value="<%= apartment._id %>" <%= resident.apartment.equals(apartment._id) ? 'selected' : '' %>>
+                <%= apartment.apartmentName %>
+              </option>
+            <% }); %>
+          </select>
+        </div>
+
+        <!-- Description -->
+        <div class="col-md-12 mb-3">
+          <label for="residentDescription" class="form-label">Resident Description</label>
+          <textarea class="form-control" id="residentDescription" name="residentDescription" rows="4" required><%= resident.residentDescription %></textarea>
+        </div>
+
+        <!-- Is Owned -->
+        <div class="col-md-12 mb-3">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="isOwned" name="isOwned" <%= resident.isOwned ? 'checked' : '' %>>
+            <label class="form-check-label" for="isOwned">Owned Resident</label>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="col-12">
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-save"></i> Update Resident
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

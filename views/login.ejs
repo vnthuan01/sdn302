@@ -1,0 +1,55 @@
+<!-- Nội dung Login -->
+<div class="d-flex align-items-center justify-content-center">
+  <div class="card shadow border-0" style="width: 100%; max-width: 420px">
+    <div class="card-header bg-black text-white text-center">
+      <h4 class="mb-0">Login</h4>
+    </div>
+    <div class="card-body bg-white">
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <label for="us" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="us"
+            name="us"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="pw" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="pw"
+            name="pw"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="rememberMe" />
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+          </div>
+          <a href="#" class="text-decoration-none small">Forgot password?</a>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-dark">Login</button>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer text-center bg-light">
+      <small
+        >Don't have an account?
+        <a href="/register" class="text-dark text-decoration-none"
+          >Sign up</a
+        ></small
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+[
+  {
+    "_id": {
+      "$oid": "64916da37f8a6ac611905603"
+    },
+    "residentName": "Barack Onana",
+    "residentDescription": "Time to practice with some of the Flutter & Dart basics you gained up to this point.",
+    "floor": 21,
+    "isOwned": true,
+    "yOB": 1990,
+    "apartment": {
+      "$oid": "64916be07f8a6ac6119055fe"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64916de77f8a6ac611905607"
+    },
+    "residentName": "Antoneo",
+    "residentDescription": "Building Responsive & Adaptive User Interfaces [EXPENSE TRACKER APP]",
+    "floor": 32,
+    "isOwned": true,
+    "yOB": 1988,
+    "apartment": {
+      "$oid": "64916be07f8a6ac6119055fe"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64916e0b7f8a6ac61190560a"
+    },
+    "residentName": "Ronaldio",
+    "residentDescription": "Building Multi-Screen Apps & Navigating Between Screens",
+    "floor": 14,
+    "yOB": 1982,
+    "isOwned": true,
+    "apartment": {
+      "$oid": "64916be07f8a6ac6119055fe"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64916e727f8a6ac611905610"
+    },
+    "residentName": "Messeo",
+    "residentDescription": "Time for the second assignment of this module, are you ready?",
+    "floor": 16,
+    "yOB": 1981,
+    "isOwned": true,
+    "apartment": {
+      "$oid": "64916b697f8a6ac6119055fc"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64916ea17f8a6ac611905612"
+    },
+    "residentName": "Ganachio",
+    "residentDescription": "We learned a lot about Pug, Handlebars and EJS so let's see if we know how to use these templating engines now!",
+    "floor": 31,
+    "yOB": 1978,
+    "isOwned": false,
+    "apartment": {
+      "$oid": "64916b697f8a6ac6119055fc"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64916f047f8a6ac611905616"
+    },
+    "residentName": "Hibernate, JPA and JDBC",
+    "residentDescription": "Hibernate, JPA and JDBC",
+    "floor": 14,
+    "yOB": 1974,
+    "isOwned": true,
+    "apartment": {
+      "$oid": "64916c557f8a6ac611905600"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64916f317f8a6ac611905619"
+    },
+    "residentName": "REST API",
+    "residentDescription": "Spring Boot REST: Spring Data REST",
+    "floor": 17,
+    "yOB": 1968,
+    "isOwned": true,
+    "apartment": {
+      "$oid": "64916c557f8a6ac611905600"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64916f877f8a6ac61190561d"
+    },
+    "residentName": "React Basics & Working With Components",
+    "residentDescription": "In this apartment module, you learned about key React features which you must know for every React app you're going to build! Hence it's time to check what you learned and verify that we're all on the same page!",
+    "floor": 13,
+    "yOB": 1984,
+    "isOwned": true,
+    "apartment": {
+      "$oid": "64916b3b7f8a6ac6119055fa"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64916fb07f8a6ac61190561f"
+    },
+    "residentName": "React State & Working with Events",
+    "residentDescription": "Time to practice what you learned about events and state in React apps.",
+    "floor": 10,
+    "yOB": 1983,
+    "isOwned": true,
+    "apartment": {
+      "$oid": "64916b3b7f8a6ac6119055fa"
+    }
+  }
+  ]
