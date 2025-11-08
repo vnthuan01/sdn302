@@ -3,7 +3,7 @@ const router = express.Router();
 const Account = require("../models/account");
 const auth = require("../middlewares/auth");
 
-router.post("/api/login", async (req, res) => {
+router.post("/auth/login", async (req, res) => {
   try {
     const {us, pw} = req.body;
 

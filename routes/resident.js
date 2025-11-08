@@ -139,7 +139,7 @@ router.get("/view/residents", auth.authenticateSession, async (req, res) => {
       .populate("apartment")
       .sort({createdAt: -1});
     res.render("dashboard", {
-      title: "Residents list",
+      title: "Views",
       user: req.user,
       residents,
       messages: req.flash(),
@@ -154,7 +154,7 @@ router.get("/residents/add", auth.authenticateSession, async (req, res) => {
   try {
     const apartments = await Apartment.find().sort({apartmentName: 1});
     res.render("residents/add", {
-      title: "Add Resident",
+      title: "Add",
       user: req.user,
       apartments,
       messages: req.flash(),
@@ -243,7 +243,7 @@ router.get("/residents/:id", auth.authenticateSession, async (req, res) => {
 
     const apartments = await Apartment.find().sort({name: 1});
     res.render("residents/edit", {
-      title: "Resident Details",
+      title: "Details",
       user: req.user,
       resident,
       apartments,

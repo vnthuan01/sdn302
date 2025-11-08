@@ -6,10 +6,10 @@ const auth = require("../middlewares/auth");
 
 router.get("/api/apartments", auth.authenticateApiToken, async (req, res) => {
   try {
-    const apartments = await Apartment.find().sort({ apartmentName: 1 });
+    const apartments = await Apartment.find().sort({apartmentName: 1});
     res.json(apartments);
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    res.status(500).json({message: "Server error", error: error.message});
   }
 });
 
@@ -20,24 +20,24 @@ router.get(
     try {
       const apartment = await Apartment.findById(req.params.id);
       if (!apartment) {
-        return res.status(404).json({ message: "Apartment not found" });
+        return res.status(404).json({message: "Apartment not found"});
       }
       res.json(apartment);
     } catch (error) {
-      res.status(500).json({ message: "Server error", error: error.message });
+      res.status(500).json({message: "Server error", error: error.message});
     }
   }
 );
 
 router.post("/api/apartments", auth.authenticateApiToken, async (req, res) => {
   try {
-    const { apartmentName, totalOfFloors } = req.body;
+    const {apartmentName, totalOfFloors} = req.body;
 
-    const existingApartment = await Apartment.findOne({ apartmentNameName });
+    const existingApartment = await Apartment.findOne({apartmentNameName});
     if (existingApartment) {
       return res
         .status(400)
-        .json({ message: "Apartment with this name already exists" });
+        .json({message: "Apartment with this name already exists"});
     }
 
     const apartment = new Apartment({
@@ -48,7 +48,7 @@ router.post("/api/apartments", auth.authenticateApiToken, async (req, res) => {
     await apartment.save();
     res.status(201).json(apartment);
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    res.status(500).json({message: "Server error", error: error.message});
   }
 });
 
@@ -57,11 +57,11 @@ router.put(
   auth.authenticateApiToken,
   async (req, res) => {
     try {
-      const { apartmentName, totalOfFloors } = req.body;
+      const {apartmentName, totalOfFloors} = req.body;
 
       const existingApartment = await Apartment.findOne({
         apartmentName,
-        _id: { $ne: req.params.id },
+        _id: {$ne: req.params.id},
       });
 
       console.log(existingApartment);
@@ -69,22 +69,22 @@ router.put(
       if (existingApartment) {
         return res
           .status(400)
-          .json({ message: "Apartment with this name already exists" });
+          .json({message: "Apartment with this name already exists"});
       }
 
       const apartment = await Apartment.findByIdAndUpdate(
         req.params.id,
-        { apartmentName, totalOfFloors: parseInt(totalOfFloors, 10) },
-        { new: true, runValidators: true }
+        {apartmentName, totalOfFloors: parseInt(totalOfFloors, 10)},
+        {new: true, runValidators: true}
       );
 
       if (!apartment) {
-        return res.status(404).json({ message: "Apartment not found" });
+        return res.status(404).json({message: "Apartment not found"});
       }
 
       res.json(apartment);
     } catch (error) {
-      res.status(500).json({ message: "Server error", error: error.message });
+      res.status(500).json({message: "Server error", error: error.message});
     }
   }
 );
@@ -96,7 +96,7 @@ router.delete(
     try {
       const apartment = await Apartment.findByIdAndDelete(req.params.id);
       if (!apartment) {
-        return res.status(404).json({ message: "Apartment not found" });
+        return res.status(404).json({message: "Apartment not found"});
       }
 
       const existResident = await Resident.countDocuments({
@@ -107,9 +107,9 @@ router.delete(
           message: "Can't not delete apartment with existed Residents in.",
         });
       }
-      res.json({ message: "Apartment deleted successfully" });
+      res.json({message: "Apartment deleted successfully"});
     } catch (error) {
-      res.status(500).json({ message: "Server error", error: error.message });
+      res.status(500).json({message: "Server error", error: error.message});
     }
   }
 );
